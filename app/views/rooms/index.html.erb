@@ -1,19 +1,21 @@
 <div class="container">
   <h1><%= @rooms.count %> cheap rooms found in hotels nearby</h1>
 
-  <div class="room-cards">
+  <div class="cards-rooms">
     <% @rooms.each do |room| %>
-      <div class="card-trip">
-        <img src="https://images.pexels.com/photos/2640604/pexels-photo-2640604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= room.hotel.name %></h2>
-            <p><%= room.hotel.address %></p>
+      <%= link_to room_path(room) do %>
+        <div class="card-room">
+          <img src="https://images.pexels.com/photos/2640604/pexels-photo-2640604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+          <div class="card-room-infos">
+            <div>
+              <h2><%= room.hotel.name %></h2>
+              <p><%= room.hotel.address %></p>
+            </div>
+            <h2 class="card-room-pricing"><%= room.price_per_night %> €</h2>
+            <p class="card-room-user avatar-bordered"><%= room.capacity %></p>
           </div>
-          <h2 class="card-trip-pricing"><%= room.price_per_night %> €</h2>
-          <p class="card-trip-user avatar-bordered"><%= room.capacity %></p>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
