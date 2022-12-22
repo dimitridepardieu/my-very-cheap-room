@@ -6,8 +6,10 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to room_path(@booking.room)
+      flash[:notice] = "Your booking is now confirmed"
     else
       render room_path(@booking.room), status: :unprocessable_entity
+      flash[:alert] = "Your booking could not be registered"
     end
   end
 
