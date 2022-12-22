@@ -8,4 +8,8 @@
   <p>Location: <%= @room.hotel.address %></p>
   <p>People: <%= @room.capacity %></p>
   <p>Price: <%= @room.price_per_night %></p>
+  
+  <button class="btn btn-primary">
+    <%= link_to "Back", rooms_path %>
+  </button>
 </div>
