@@ -8,7 +8,13 @@
   <p>Location: <%= @room.hotel.address %></p>
   <p>People: <%= @room.capacity %></p>
   <p>Price: <%= @room.price_per_night %></p>
-  
+
+  <%= simple_form_for [@room, @booking] do |f| %>
+    <%= f.input :starts_at %>
+    <%= f.input :ends_at %>
+    <%= f.button :submit %>
+  <% end %>
+
   <button class="btn btn-primary">
     <%= link_to "Back", rooms_path %>
   </button>
