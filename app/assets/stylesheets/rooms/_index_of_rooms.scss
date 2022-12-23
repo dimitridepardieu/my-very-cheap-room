@@ -8,6 +8,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
 
 .card-room > img {
@@ -24,10 +25,9 @@
 
 .card-room p {
   font-size: 12px;
-  opacity: .7;
+  opacity: 1;
   margin: 0;
 }
-
 
 .card-room .card-room-infos {
   padding: 16px;
@@ -37,11 +37,18 @@
   position: relative;
 }
 
-.card-room-infos .card-room-user {
+.card-room-infos .tag-capacity {
   position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+  right: 14px;
+  top: -13px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(155, 155, 155);
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
 }
 
 a {
@@ -52,4 +59,12 @@ a {
 a:hover {
   text-decoration: none;
   color: black;
+}
+
+.zoom {
+  transition: transform .1s;
+}
+
+.zoom:hover {
+  transform: scale(1.02);
 }
