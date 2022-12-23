@@ -1,9 +1,14 @@
 <div class="container">
-  <h1>
-    Find the cheapest room<br>
-    for your next solo adventure
-  </h1>
-  <button type="button" class="btn btn-primary">
-    <%= link_to "See all rooms", rooms_path %>
-  </button>
+
+  <!-- Main logo in the middle of the page -->
+  <div class="text-center">
+      <%= image_tag "logo.svg" %>
+  </div>
+
+  <!-- Main button which redirects to the index -->
+  <div class="text-center">
+    <button type="button" class="home-button">
+      <%= link_to "Our rooms", rooms_path %>
+    </button>
+  </div>
 </div>
