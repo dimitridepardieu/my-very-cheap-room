@@ -10,9 +10,25 @@
   <p>Price: <%= @room.price_per_night %></p>
 
   <%= simple_form_for [@room, @booking] do |f| %>
-    <%= f.input :starts_at %>
-    <%= f.input :ends_at %>
-    <%= f.button :submit %>
+    <div class="row">
+      <div class="col">
+        <%= f.input :starts_at, as: :string,
+                    wrapper_html: { class: "mb-4" },
+                    label_html: { class: "form-label text-secondary fw-bold" },
+                    input_html: { data: { controller: "flatpickr" } } %>
+      </div>
+      <div class="col">
+        <%= f.input :ends_at, as: :string,
+                    wrapper_html: { class: "mb-4" },
+                    label_html: { class: "form-label text-secondary fw-bold" },
+                    input_html: { data: { controller: "flatpickr" } } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.button :submit %>
+      </div>
+    </div>
   <% end %>
 
   <button class="btn btn-primary">
