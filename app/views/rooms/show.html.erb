@@ -1,37 +1,48 @@
-<div style="height: 400px;
-            background-image: url('https://images.pexels.com/photos/2640604/pexels-photo-2640604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');"
-            >
+<div class="banner-room text-center"
+     style="height: 400px;
+            background-position: center;
+            background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/2640604/pexels-photo-2640604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+  <div class="container">
+    <div class="room-info">
+      <h1><%= @room.hotel.name %></h1>
+      <p>🌍 <%= @room.hotel.address %></p>
+      <p>🧍‍♂️ <%= @room.capacity %></p>
+      <p>💵 <%= @room.price_per_night %> € / night</p>
+
+      <button class="btn btn-light">
+        <%= link_to "Back", rooms_path %>
+      </button>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-  <h1><%= @room.hotel.name %></h1>
-  <p>Location: <%= @room.hotel.address %></p>
-  <p>People: <%= @room.capacity %></p>
-  <p>Price: <%= @room.price_per_night %></p>
+  <div class="booking-form">
+    <%= simple_form_for [@room, @booking] do |f| %>
+      <div class="row">
+        <div class="col">
+          <%= f.input :starts_at, as: :string,
+                      label: "Check in",
+                      placeholder: "Arrival",
+                      wrapper_html: { class: "mb-4" },
+                      label_html: { class: "form-label text-secondary fw-bold" },
+                      input_html: { data: { controller: "flatpickr" } } %>
+        </div>
+        <div class="col">
+          <%= f.input :ends_at, as: :string,
+                      label: "Check out",
+                      placeholder: "Departure",
+                      wrapper_html: { class: "mb-4" },
+                      label_html: { class: "form-label text-secondary fw-bold" },
+                      input_html: { data: { controller: "flatpickr" } } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col btn btn-primary">
+          <%= f.button :submit %>
+        </div>
+      </div>
+    <% end %>
 
-  <%= simple_form_for [@room, @booking] do |f| %>
-    <div class="row">
-      <div class="col">
-        <%= f.input :starts_at, as: :string,
-                    wrapper_html: { class: "mb-4" },
-                    label_html: { class: "form-label text-secondary fw-bold" },
-                    input_html: { data: { controller: "flatpickr" } } %>
-      </div>
-      <div class="col">
-        <%= f.input :ends_at, as: :string,
-                    wrapper_html: { class: "mb-4" },
-                    label_html: { class: "form-label text-secondary fw-bold" },
-                    input_html: { data: { controller: "flatpickr" } } %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.button :submit %>
-      </div>
-    </div>
-  <% end %>
-
-  <button class="btn btn-primary">
-    <%= link_to "Back", rooms_path %>
-  </button>
+  </div>
 </div>
